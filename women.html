@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Women's Shoes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Women's Shoes</h1>
+        <p>"Step confidently into every moment. Your perfect pair awaits!"</p>
+        <div class="cart-icon">
+            <a href="cart.html">
+                <img src="cart-icon.webp" alt="Cart" />
+            </a>
+        </div>
+    </header>
+
+    <section class="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="womenheels1.webp" alt="Women's Casual Sneakers">
+            <p>Women's Heels</p>
+            <p>Price: $59.99</p>
+            <button onclick="addToCart('Women\'s Casual Sneakers', 59.99)">Buy Now</button>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="womenheels2.webp" alt="Women's Running Shoes">
+            <p>Women's Heels</p>
+            <p>Price: $79.99</p>
+            <button onclick="addToCart('Women\'s Running Shoes', 79.99)">Buy Now</button>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="womenheels3.webp" alt="Women's Stylish Sandals">
+            <p>Women's Heels</p>
+            <p>Price: $49.99</p>
+            <button onclick="addToCart('Women\'s Stylish Sandals', 49.99)">Buy Now</button>
+        </div>
+    </section>
+    <section class="products">
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="womenshoes.jpg" alt="Women's Slip-On Flats">
+            <p>Nike Running Shoes</p>
+            <p>Price: $39.99</p>
+            <button onclick="addToCart('Nike Running Shoes', 39.99)">Buy Now</button>
+        </div>
+        <!-- Product 5 -->
+        <div class="product-card">
+            <img src="womenshoes2.webp" alt="Women's Athletic Trainers">
+            <p>HRX Running Shoes</p>
+            <p>Price: $29.99</p>
+            <button onclick="addToCart('HRX Running Shoes', 29.99)">Buy Now</button>
+        </div>
+        <!-- Product 6 -->
+        <div class="product-card">
+            <img src="womenshoes3.webp" alt="Women's Fashion Boots">
+            <p>Puma Running Shoes</p>
+            <p>Price: $19.99</p>
+            <button onclick="addToCart('Puma Running Shoes', 19.99)">Buy Now</button>
+        </div>
+    </section>
+    <section class="products">
+        <!-- Product 7 -->
+        <div class="product-card">
+            <img src="womensliders.webp" alt="Women's Flip Flops">
+            <p>Women's Flip Flops</p>
+            <p>Price: $2.99</p>
+            <button onclick="addToCart('Women\'s Flip Flops', 2.99)">Buy Now</button>
+        </div>
+        <!-- Product 8 -->
+        <div class="product-card">
+            <img src="womensliders2.webp" alt="Women's High Heels">
+            <p>Women's Flip Flops</p>
+            <p>Price: $4.99</p>
+            <button onclick="addToCart('Women\'s High Heels', 4.99)">Buy Now</button>
+        </div>
+        <!-- Product 9 -->
+        <div class="product-card">
+            <img src="womensliders3.webp" alt="Women's Casual Loafers">
+            <p>Women's Flip Flops</p>
+            <p>Price: $3.99</p>
+            <button onclick="addToCart('Women\'s Casual Loafers', 3.99)">Buy Now</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Shoe Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Add to cart function
+        function addToCart(product, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let existingItem = cart.find(item => item.product === product);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ product, price, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product} has been added to your cart!`);
+        }
+    </script>
+
+</body>
+</html>

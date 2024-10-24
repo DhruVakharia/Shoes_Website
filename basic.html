@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online Shoe Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Shoe Store</h1>
+        <div class="cart-icon">
+            <a href="cart.html">
+                <img src="cart-icon.webp" alt="Cart" />
+            </a>
+        </div>
+    </header>
+
+    <nav><center><br><h4>
+        <a href="#">Home</a>
+        <a href="mens-shoes.html">Men's Section</a>
+        <a href="women.html">Women</a>
+        <a href="kids.html">Kids</a>
+        <a href="contact-us.html">Contact Us</a></center></h4>
+    </nav>
+
+    <section class="hero">
+        <h1 style="color:blue"><center>Stylish, Comfortable & Affordable</center></h1>
+    </section>
+
+    <section class="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="mensneakers1.png" alt="Air Force 1">
+            <h3>Air Force 1</h3>
+            <p>$59.99</p>
+            <button onclick="addToCart('Air Force 1', 59.99)">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="mensneakers2.png" alt="Air Force 2">
+            <h3>Air Force 2</h3>
+            <p>$29.99</p>
+            <button onclick="addToCart('Air Force 2', 29.99)">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="mensneakers1.png" alt="Air Force 1(First copy)">
+            <h3>Air Force 1(First copy)</h3>
+            <p>$9.99</p>
+            <button onclick="addToCart('Air Force 1(First copy)', 9.99)">Buy Now</button>
+        </div>
+
+    </section>
+
+    <section class = "products">
+
+        <div class="product-card">
+            <img src="womenshoes2.webp" alt="Women's Sneakers">
+            <h3>HRX Running Shoes</h3>
+            <p>$49.99</p>
+            <button onclick="addToCart('HRX Running Shoes', 49.99)">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="womenshoes3.webp" alt="Women's Sneakers">
+            <h3>Puma Running Shoes</h3>
+            <p>$49.99</p>
+            <button onclick="addToCart('Puma Running Shoes', 49.99)">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="womenshoes.jpg" alt="Women's Sneakers">
+            <h3>Nike Running Shoes</h3>
+            <p>$49.99</p>
+            <button onclick="addToCart('Nike Running Shoes', 49.99)">Buy Now</button>
+        </div>
+
+    </section>
+
+    <section class = "products">
+
+        <div class="product-card">
+            <img src="kids shoes.avif" alt="Kids' Sports Shoes">
+            <h3>Kids' Air Force 1</h3>
+            <p>$39.99</p>
+            <button onclick="addToCart('Kids\' Air Force 1', 39.99)">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="kids shoes 2.avif" alt="Kids' Sports Shoes">
+            <h3>Kids' Air Force 2</h3>
+            <p>$39.99</p>
+            <button onclick="addToCart('Kids\' Air Force 2', 39.99)">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="kids shoes 3.avif" alt="Kids' Sports Shoes">
+            <h3>Kids' Air Force 3</h3>
+            <p>$39.99</p>
+            <button onclick="addToCart('Kids\' Air Force 3', 39.99)">Buy Now</button>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Shoe Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Add to cart function
+        function addToCart(product, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let existingItem = cart.find(item => item.product === product);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ product, price, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product} has been added to your cart!`);
+        }
+    </script>
+
+</body>
+</html>

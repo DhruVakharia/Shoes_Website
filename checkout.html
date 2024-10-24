@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - E-Commerce Shoes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>E-Commerce Shoes</h1>
+        </div>
+        <div class="cart-icon">
+            <a href="cart.html">
+                <img src="cart-icon.webp" alt="Cart" width="30px">
+            </a>
+        </div>
+    </header>
+
+    <!-- Checkout Section -->
+    <section class="checkout">
+        <h2>Checkout</h2>
+
+        <div class="checkout-details">
+            <form action="checkout.php" method="POST" id="checkout-form" onsubmit="return placeOrder();">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Shipping Address:</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Payment Method:</label>
+                    <select id="payment-method" name="payment-method" required>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="debit-card">Debit Card</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="card-details">Card Details:</label>
+                    <input type="text" id="card-details" name="card-details" placeholder="Card Number" required>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <p>Total items: <span id="total-items">0</span></p>
+                    <p>Total price: <span id="total-price">$0.00</span></p>
+                </div>
+
+                <button type="submit" class="checkout-btn">Place Order</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 E-Commerce Shoes. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to load cart items and calculate totals
+        function loadCartSummary() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalItems = 0;
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                totalItems += item.quantity;
+                totalPrice += item.price * item.quantity;
+            });
+
+            document.getElementById('total-items').innerText = totalItems;
+            document.getElementById('total-price').innerText = `$${totalPrice.toFixed(2)}`;
+        }
+
+        // Function to handle order placement
+        function placeOrder() {
+            // You can add more order processing logic here
+            // Redirect to order confirmation page
+            window.location.href = 'order-confirmed.html';
+            return false; // Prevent form submission
+        }
+
+        // Load the cart summary when the page is loaded
+        window.onload = loadCartSummary;
+    </script>
+</body>
+</html>

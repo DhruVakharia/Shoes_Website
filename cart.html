@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Your Shopping Cart</h1>
+    </header>
+
+    <div class="cart-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will be dynamically populated here -->
+            </tbody>
+        </table>
+
+        <div class="total">
+            Total: <span id="total-price">$0.00</span>
+        </div>
+
+        <div class="cart-actions">
+            <button class="reset-btn" onclick="resetCart()">Reset Cart</button>
+            <button class="proceed-btn" onclick="window.location.href='http://localhost/shoe_store/checkout.php'">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Shoe Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to load cart items and display them in the cart
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartItemsContainer = document.getElementById('cart-items');
+            let totalPrice = 0;
+
+            cart.forEach((item, index) => {
+                let subtotal = item.price * item.quantity;
+                totalPrice += subtotal;
+
+                // Create table row for each cart item
+                cartItemsContainer.innerHTML += `
+                    <tr>
+                        <td>${item.product}</td>
+                        <td>$${item.price.toFixed(2)}</td>
+                        <td><input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)"></td>
+                        <td id="subtotal-${index}">$${subtotal.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('total-price').innerText = `$${totalPrice.toFixed(2)}`;
+        }
+
+        // Function to update the quantity of a specific item in the cart
+        function updateQuantity(index, quantity) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart[index].quantity = parseInt(quantity);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            location.reload(); // Reload to update totals
+        }
+
+        // Function to reset the cart and remove all items
+        function resetCart() {
+            // Clear the cart from localStorage
+            localStorage.removeItem('cart');
+            // Reload the page to update the UI
+            location.reload();
+        }
+
+        // Load the cart items when the page is loaded
+        window.onload = loadCart;
+    </script>
+
+</body>
+</html>

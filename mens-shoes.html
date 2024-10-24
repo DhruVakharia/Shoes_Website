@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Men's Shoes - Shoe Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Men's Shoes</h1>
+        <div class="cart-icon">
+            <a href="cart.html">
+                <img src="cart-icon.webp" alt="Cart" />
+            </a>
+        </div>
+    </header>
+
+    <section class="motivation">
+        <blockquote>
+            <h3><center><b>"The right shoes can elevate your style and fuel your performance. Step forward with confidence, because the journey starts with your first step."</h3></center></b>
+        </blockquote>
+    </section>
+
+    <section class="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="mensneakers1.png" alt="Air Force 1">
+            <h3>Air Force 1</h3>
+            <p>$59.99</p>
+            <button onclick="addToCart('Air Force 1', 59.99)">Buy Now</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="mensneakers2.png" alt="Men's Running Shoes">
+            <h3>Air Force 2</h3>
+            <p>$29.99</p>
+            <button onclick="addToCart('Air Force 2', 29.99)">Buy Now</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="mensneakers1.png" alt="Men's Sliders">
+            <h3>Air Force 1(First Copy)</h3>
+            <p>$9.99</p>
+            <button onclick="addToCart('Air Force 1(First Copy)', 9.99)">Buy Now</button>
+        </div>
+</section>
+<section class = "products">
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="mensliders1.webp" alt="Men's Leather Sneakers">
+            <h3>Men's Sliders</h3>
+            <p>$3.99</p>
+            <button onclick="addToCart('Men\'s Leather Sneakers', 3.99)">Buy Now</button>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <img src="mensliders2.webp" alt="Men's Sports Shoes">
+            <h3>Span Sliders</h3>
+            <p>$4.99</p>
+            <button onclick="addToCart('Span Sliders', 4.99)">Buy Now</button>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <img src="mensliders3.webp" alt="Men's Casual Loafers">
+            <h3>Crocs Sliders</h3>
+            <p>$5.99</p>
+            <button onclick="addToCart('Crocs Sliders', 5.99)">Buy Now</button>
+        </div>
+    </section>
+    <section class = "products">
+        <!-- Product 7 -->
+        <div class="product-card">
+            <img src="mensportshoes.png" alt="Men's Gym Shoes">
+            <h3>Men's Gym Shoes</h3>
+            <p>$9.99</p>
+            <button onclick="addToCart('Men\'s Gym Shoes', 9.99)">Buy Now</button>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+            <img src="mensportshoes2.png" alt="Men's Sandals">
+            <h3>Nike Running Shoes</h3>
+            <p>$8.99</p>
+            <button onclick="addToCart('Nike Running Shoes', 8.99)">Buy Now</button>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card">
+            <img src="mensportshoes3.png" alt="Men's Running Slippers">
+            <h3>Nike Walking Shoes</h3>
+            <p>$7.99</p>
+            <button onclick="addToCart('Nike Walking Shoes', 7.99)">Buy Now</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Shoe Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Add to cart function
+        function addToCart(product, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let existingItem = cart.find(item => item.product === product);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ product, price, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product} has been added to your cart!`);
+        }
+    </script>
+
+</body>
+</html>

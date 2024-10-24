@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Order Confirmation</h1>
+    </header>
+
+    <section class="confirmation">
+        <h2>Thank you for your order!</h2>
+        <img src="tick.png" alt="Order Confirmed" width="100">
+        <p>Your order has been placed successfully.</p>
+        <p>Order Number: <strong>#12345</strong></p>
+        <p>Your order will be delivered within 3-5 buisness days.</p>
+
+    </section>
+
+    <footer>
+        <p>© 2024 E-Commerce Shoes. All rights reserved.</p>
+    </footer>
+    <script>
+        // Function to generate a random order number
+        function generateOrderNumber() {
+            return Math.floor(10000 + Math.random() * 90000); // Generates a number between 10000 and 99999
+        }
+
+        // Function to display the order number
+        window.onload = function() {
+            const orderNumber = generateOrderNumber();
+            document.getElementById('order-number').innerText = `#${orderNumber}`;
+        };
+    </script>
+</body>
+</html>
