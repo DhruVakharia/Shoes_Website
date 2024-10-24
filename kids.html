@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kids' Shoes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Kids' Shoes</h1>
+    <p>"Let your little ones step into comfort and fun with the perfect pair of shoes!"</p>
+
+    <!-- Cart Icon -->
+    <div class="cart-icon">
+        <a href="cart.html">
+            <img src="cart-icon.webp" alt="Cart" />
+        </a>
+    </div>
+</header>
+
+<section class="products">
+    <!-- Section 1: First Row of 3 Products -->
+    <div class="product-card">
+        <img src="kidsshoes1.webp" alt="Kids' Running Shoes">
+        <p>Kids' Shoes</p>
+        <p>Price: $5.99</p>
+        <button onclick="addToCart('Kids\' Shoes', 5.99)">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="kidsshoes2.webp" alt="Kids' Casual Sneakers">
+        <p>Kids' High Rise</p>
+        <p>Price: $7.99</p>
+        <button onclick="addToCart('Kids\' High Rise', 7.99)">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="kidsshoes3.webp" alt="Kids' Sandals">
+        <p>Kids' Running Shoes</p>
+        <p>Price: $9.99</p>
+        <button onclick="addToCart('Kids\' Running Shoes', 9.99)">Buy Now</button>
+    </div>
+</section>
+<section class="products">
+    <!-- Section 2: Second Row of 3 Products -->
+    <div class="product-card">
+        <img src="kidssandal1.webp" alt="Kids' Flip Flops">
+        <p>Girls Sandals</p>
+        <p>Price: $4.99</p>
+        <button onclick="addToCart('Girls Sandals', 4.99)">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="kidssandal2.webp" alt="Kids' Sports Shoes">
+        <p>Unisex Sandals</p>
+        <p>Price: $4.99</p>
+        <button onclick="addToCart('Unisex Sandals', 4.99)">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="kidssandal3.webp" alt="Kids' Boots">
+        <p>Boys Sandals</p>
+        <p>Price: $9.99</p>
+        <button onclick="addToCart('Boys Sandals', 9.99)">Buy Now</button>
+    </div>
+</section>
+<section class="products">
+    <!-- Section 3: Third Row of 3 Products -->
+    <div class="product-card">
+        <img src="cutie1.webp" alt="Kids' Slip-Ons">
+        <p>Girls' Slip-Ons</p>
+        <p>Price: $14.99</p>
+        <button onclick="addToCart('Girls\' Slip-Ons', 14.99)">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="cutie2.webp" alt="Kids' Waterproof Shoes">
+        <p>Boys' Waterproof Shoes</p>
+        <p>Price: $24.99</p>
+        <button onclick="addToCart('Boys\' Waterproof Shoes', 24.99)">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="cutie3.webp" alt="Kids' Formal Shoes">
+        <p>Girls' Cute Shoes</p>
+        <p>Price: $5.99</p>
+        <button onclick="addToCart('Kids\' Formal Shoes', 5.99)">Buy Now</button>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Shoe Store. All rights reserved.</p>
+</footer>
+
+<script>
+    // Add to cart function
+    function addToCart(product, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let existingItem = cart.find(item => item.product === product);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ product, price, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${product} has been added to your cart!`);
+    }
+</script>
+
+</body>
+</html>
